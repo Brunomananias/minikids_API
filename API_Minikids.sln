@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_Minikids", "API_Minikids\API_Minikids.csproj", "{EB6F33A3-364B-455C-9D86-1A3CEDFD40BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB6F33A3-364B-455C-9D86-1A3CEDFD40BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6F33A3-364B-455C-9D86-1A3CEDFD40BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6F33A3-364B-455C-9D86-1A3CEDFD40BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6F33A3-364B-455C-9D86-1A3CEDFD40BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30B5FC04-85A5-4BF3-A6E5-6ACF06CB99B1}
+	EndGlobalSection
+EndGlobal
