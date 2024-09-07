@@ -22,9 +22,8 @@ namespace API_Minikids.Controllers
             return await _context.Eventos.ToListAsync();
         }
 
-        // GET api/eventos/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Evento>> GetEvento(int id)
+        public async Task<IActionResult> GetEventoById(int id)
         {
             var evento = await _context.Eventos.FindAsync(id);
 
@@ -36,22 +35,35 @@ namespace API_Minikids.Controllers
             return Ok(evento);
         }
 
-        // POST api/clientes/{clienteId}/eventos
-        [HttpPost("clientes/{clienteId}/eventos")]
-        public async Task<ActionResult<Evento>> PostEvento(int clienteId, Evento evento)
+
+        [HttpPost]
+        public async Task<IActionResult> PostEvento([FromBody] Evento eventoDto)
         {
-            var cliente = await _context.Clientes.FindAsync(clienteId);
+        // Verificar se o cliente existe
+        var cliente = await _context.Clientes.FindAsync(eventoDto.ClienteId);
             if (cliente == null)
             {
                 return NotFound("Cliente não encontrado.");
             }
 
-            evento.ClienteId = clienteId;
+            // Criar um novo evento
+            var evento = new Evento
+            {
+                Data = eventoDto.Data,
+                Pacote = eventoDto.Pacote,
+                TempoDeFesta = eventoDto.TempoDeFesta, // Certifique-se de que está no formato correto
+                Endereco = eventoDto.Endereco,
+                Observacoes = eventoDto.Observacoes,
+                ClienteId = eventoDto.ClienteId
+            };
+
+            // Adicionar o evento ao contexto
             _context.Eventos.Add(evento);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEvento), new { id = evento.Id }, evento);
+            return CreatedAtAction(nameof(GetEventoById), new { id = evento.Id }, evento);
         }
+
 
         // PUT api/eventos/{id}
         [HttpPut("{id}")]

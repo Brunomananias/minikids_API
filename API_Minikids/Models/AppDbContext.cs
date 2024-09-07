@@ -14,13 +14,12 @@ namespace API_Minikids.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            // Configurar a relação entre Cliente e Evento
-            modelBuilder.Entity<Evento>()
-                .HasOne(e => e.Cliente)
-                .WithMany(c => c.Eventos)
+            modelBuilder.Entity<Cliente>()
+                .HasMany(c => c.Eventos)
+                .WithOne()
                 .HasForeignKey(e => e.ClienteId);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

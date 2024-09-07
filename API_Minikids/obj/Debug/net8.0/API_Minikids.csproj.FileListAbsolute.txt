@@ -135,3 +135,4 @@ D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\runtimes\win
 D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\obj\Debug\net8.0\API_Minikids.sourcelink.json

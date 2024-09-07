@@ -16,19 +16,29 @@ namespace API_Minikids.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+        public async Task<IActionResult> GetClientesWithEventos()
         {
-            return await _context.Clientes.ToListAsync();
+            var clientes = await _context.Clientes
+                .Include(c => c.Eventos) // Inclui os eventos relacionados
+                .ToListAsync();
+
+            return Ok(clientes);
         }
 
+        // GET: api/Clientes/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            // Inclui os eventos associados ao cliente
+            var cliente = await _context.Clientes
+                .Include(c => c.Eventos)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
             if (cliente == null)
             {
                 return NotFound();
             }
+
             return cliente;
         }
 
