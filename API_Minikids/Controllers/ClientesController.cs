@@ -15,6 +15,25 @@ namespace API_Minikids.Controllers
             _context = context;
         }
 
+        [HttpGet("{clienteId}/pagamentos")]
+        public async Task<ActionResult> GetPagamentos(int clienteId)
+        {
+            var eventos = await _context.Eventos
+                .Where(e => e.ClienteId == clienteId)
+                .Include(e => e.Pagamentos)
+                .ToListAsync();
+
+            var resultados = eventos.Select(e => new
+            {
+                EventoId = e.Id,
+                ValorTotalPacote = e.ValorTotalPacote,
+                ValorPago = e.Pagamentos.Sum(p => p.ValorPago),
+                ValorRestante = e.ValorTotalPacote - e.Pagamentos.Sum(p => p.ValorPago)
+            });
+
+            return Ok(resultados);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetClientesWithEventos()
         {

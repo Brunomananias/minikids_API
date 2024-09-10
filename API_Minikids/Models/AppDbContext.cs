@@ -11,9 +11,21 @@ namespace API_Minikids.Models
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Evento> Eventos { get; set; }
+        public DbSet<Pagamento> Pagamento { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Evento>()
+       .HasMany(e => e.Pagamentos)
+       .WithOne() // Sem propriedade de navegação inversa em Pagamento
+       .HasForeignKey(p => p.EventoId);
+
+            modelBuilder.Entity<Pagamento>()
+           .HasKey(p => p.Id); // Define o Id como a chave primária
+            modelBuilder.Entity<Pagamento>()
+            .Property(p => p.Id)
+            .ValueGeneratedOnAdd(); // Configura o Id como auto incremento
+
             modelBuilder.Entity<Cliente>()
                 .HasMany(c => c.Eventos)
                 .WithOne()

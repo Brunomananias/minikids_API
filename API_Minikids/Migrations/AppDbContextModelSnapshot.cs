@@ -52,7 +52,7 @@ namespace API_Minikids.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Clientes", (string)null);
                 });
 
             modelBuilder.Entity("API_Minikids.Models.Evento", b =>
@@ -84,7 +84,7 @@ namespace API_Minikids.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("Eventos");
+                    b.ToTable("Eventos", (string)null);
                 });
 
             modelBuilder.Entity("API_Minikids.Models.Evento", b =>

@@ -54,6 +54,7 @@ namespace API_Minikids.Controllers
                 TempoDeFesta = eventoDto.TempoDeFesta, // Certifique-se de que está no formato correto
                 Endereco = eventoDto.Endereco,
                 Observacoes = eventoDto.Observacoes,
+                ValorTotalPacote = eventoDto.ValorTotalPacote,
                 ClienteId = eventoDto.ClienteId
             };
 

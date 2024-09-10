@@ -8,8 +8,10 @@
         public TimeSpan TempoDeFesta { get; set; }
         public string Endereco { get; set; }
         public string? Observacoes { get; set; }
+        public decimal? ValorTotalPacote { get; set; }
 
         // Chave estrangeira para Cliente
-        public int? ClienteId { get; set; } // Nullable se a relação for opcional
+        public int? ClienteId { get; set; }
+        public List<Pagamento> Pagamentos { get; set; } = new List<Pagamento>();
     }
 }
