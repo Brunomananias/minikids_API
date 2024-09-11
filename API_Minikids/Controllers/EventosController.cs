@@ -39,26 +39,24 @@ namespace API_Minikids.Controllers
         [HttpPost]
         public async Task<IActionResult> PostEvento([FromBody] Evento eventoDto)
         {
-        // Verificar se o cliente existe
         var cliente = await _context.Clientes.FindAsync(eventoDto.ClienteId);
             if (cliente == null)
             {
                 return NotFound("Cliente não encontrado.");
             }
 
-            // Criar um novo evento
             var evento = new Evento
             {
                 Data = eventoDto.Data,
                 Pacote = eventoDto.Pacote,
-                TempoDeFesta = eventoDto.TempoDeFesta, // Certifique-se de que está no formato correto
+                HorarioFesta = eventoDto.HorarioFesta,
+                TempoDeFesta = eventoDto.TempoDeFesta, 
                 Endereco = eventoDto.Endereco,
                 Observacoes = eventoDto.Observacoes,
                 ValorTotalPacote = eventoDto.ValorTotalPacote,
                 ClienteId = eventoDto.ClienteId
             };
 
-            // Adicionar o evento ao contexto
             _context.Eventos.Add(evento);
             await _context.SaveChangesAsync();
 

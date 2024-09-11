@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public DateTime? Data { get; set; }
         public string Pacote { get; set; }
+        public DateTime? HorarioFesta { get; set; }
         public TimeSpan TempoDeFesta { get; set; }
         public string Endereco { get; set; }
         public string? Observacoes { get; set; }

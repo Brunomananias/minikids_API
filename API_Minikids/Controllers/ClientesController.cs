@@ -16,12 +16,17 @@ namespace API_Minikids.Controllers
         }
 
         [HttpGet("{clienteId}/pagamentos")]
-        public async Task<ActionResult> GetPagamentos(int clienteId)
+        public async Task<ActionResult<IEnumerable<object>>> GetPagamentos(int clienteId)
         {
             var eventos = await _context.Eventos
                 .Where(e => e.ClienteId == clienteId)
                 .Include(e => e.Pagamentos)
                 .ToListAsync();
+
+            if (eventos == null || !eventos.Any())
+            {
+                return NotFound(); // Retorna 404 se nenhum evento for encontrado
+            }
 
             var resultados = eventos.Select(e => new
             {
