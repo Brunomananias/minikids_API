@@ -12,6 +12,7 @@ namespace API_Minikids.Models
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Pagamento> Pagamento { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +31,7 @@ namespace API_Minikids.Models
                 .HasMany(c => c.Eventos)
                 .WithOne()
                 .HasForeignKey(e => e.ClienteId);
+
 
             base.OnModelCreating(modelBuilder);
         }

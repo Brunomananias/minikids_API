@@ -32,11 +32,6 @@ namespace API_Minikids.Controllers
                 .Where(p => p.EventoId == eventoId)
                 .ToListAsync();
 
-            if (pagamentos == null || !pagamentos.Any())
-            {
-                return NotFound();
-            }
-
             return pagamentos;
         }
 

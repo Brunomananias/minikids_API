@@ -1,4 +1,5 @@
 ﻿using API_Minikids.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ namespace API_Minikids.Controllers
             _context = context;
         }
 
+        [Authorize]
         [HttpGet("{clienteId}/pagamentos")]
         public async Task<ActionResult<IEnumerable<object>>> GetPagamentos(int clienteId)
         {
@@ -39,6 +41,7 @@ namespace API_Minikids.Controllers
             return Ok(resultados);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetClientesWithEventos()
         {
@@ -50,6 +53,7 @@ namespace API_Minikids.Controllers
         }
 
         // GET: api/Clientes/{id}
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
@@ -66,6 +70,7 @@ namespace API_Minikids.Controllers
             return cliente;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
@@ -74,6 +79,7 @@ namespace API_Minikids.Controllers
             return CreatedAtAction(nameof(GetCliente), new { id = cliente.Id }, cliente);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCliente(int id, Cliente cliente)
         {
@@ -87,20 +93,46 @@ namespace API_Minikids.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            // Encontre o cliente com eventos e pagamentos incluídos
+            var cliente = await _context.Clientes
+                .Include(c => c.Eventos)
+                .ThenInclude(e => e.Pagamentos)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
             if (cliente == null)
             {
                 return NotFound();
             }
 
+            // Remove todos os pagamentos associados aos eventos do cliente
+            foreach (var evento in cliente.Eventos)
+            {
+                _context.Pagamento.RemoveRange(evento.Pagamentos);
+            }
+
+            // Remove todos os eventos associados ao cliente
+            _context.Eventos.RemoveRange(cliente.Eventos);
+
+            // Remove o cliente
             _context.Clientes.Remove(cliente);
-            await _context.SaveChangesAsync();
-            return NoContent();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return NoContent(); // Ou outro código de status apropriado
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log detalhado do erro
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro interno do servidor");
+            }
         }
 
+        [Authorize]
         [HttpGet("{id}/eventos")]
         public async Task<ActionResult<IEnumerable<Evento>>> GetEventosByCliente(int id)
         {

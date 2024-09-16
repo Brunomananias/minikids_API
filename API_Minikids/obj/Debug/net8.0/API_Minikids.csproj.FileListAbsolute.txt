@@ -136,3 +136,9 @@ D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\runtimes\win
 D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 D:\Projetos\minikids\API\API_Minikids\API_Minikids\obj\Debug\net8.0\API_Minikids.sourcelink.json
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\IdentityModel.dll
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\IdentityServer4.dll
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\IdentityServer4.Storage.dll
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\Projetos\minikids\API\API_Minikids\API_Minikids\bin\Debug\net8.0\Newtonsoft.Json.dll
