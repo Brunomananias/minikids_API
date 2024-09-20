@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Adiciona serviços do controlador
+// Adiciona serviÃ§os do controlador
 builder.Services.AddControllers();
 
 // Adiciona e configura o Swagger (opcional)
@@ -54,9 +54,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000") // Substitua pelo endereço do frontend
-                   .AllowAnyHeader()
-                   .AllowAnyMethod();
+            builder.WithOrigins(
+               "https://95ce-2804-d46-3b18-d800-9890-b96-7173-5851.ngrok-free.app", // Ngrok
+               "http://localhost:3000" // localhost
+           ) // Substitua pelo endereÃ§o do frontend
+                  .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials();
         });
 });
 

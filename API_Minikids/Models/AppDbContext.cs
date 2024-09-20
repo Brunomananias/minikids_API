@@ -13,6 +13,7 @@ namespace API_Minikids.Models
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Pagamento> Pagamento { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Caixa> Caixa { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

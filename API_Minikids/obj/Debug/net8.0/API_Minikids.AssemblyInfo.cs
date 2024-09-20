@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API_Minikids")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+893c9248d930de15297fca07839087086071e180")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1454c5f00b86f4476735cca0823a85974e85bc02")]
 [assembly: System.Reflection.AssemblyProductAttribute("API_Minikids")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API_Minikids")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
